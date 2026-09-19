@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>undelalune</title>
-<meta name="description" content="Small apps and games by undelalune: Android apps, a desktop video tool and an online board games platform.">
+<meta name="description" content="Small apps and games by undelalune: Android apps, a desktop video tool, online party games and an encrypted chat.">
 <meta name="theme-color" content="#0b1324">
 <link rel="icon" type="image/svg+xml" href="undelalune.svg">
 <style>
@@ -72,9 +72,11 @@
     border-radius: 16px;
     box-shadow: 0 4px 16px rgba(0, 0, 0, .35), 0 0 0 1px rgba(255, 255, 255, .06);
   }
+  .icon.tile { background: #e6ecf7; padding: 6px; }
   @media (max-width: 30rem) {
     .card { grid-template-columns: 48px 1fr; gap: 1rem; padding: 1.1rem 1.1rem; }
     .icon { width: 48px; height: 48px; border-radius: 12px; }
+    .icon.tile { padding: 4px; }
   }
   .card h3 {
     margin: 0 0 .35rem; font-size: 1.15rem;
@@ -185,6 +187,19 @@
            Pick a game, share the room code and start playing. No accounts needed.</p>
         <div class="links">
           <a class="primary" href="https://untable.onrender.com/">Play</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <img class="icon tile" src="icons/raweye.png" alt="" width="64" height="64">
+      <div>
+        <h3>Raw Eye <span class="tag">Browser</span></h3>
+        <p>End-to-end encrypted chat in the browser. Messages are encrypted with AES-GCM
+           on your device, and the key never leaves it: the server only relays ciphertext.
+           Create a room and share the link or the room code. No accounts needed.</p>
+        <div class="links">
+          <a class="primary" href="https://raweye.onrender.com/">Open chat</a>
         </div>
       </div>
     </div>
