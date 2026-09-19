@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Жесткий черный фон -->
+  <rect width="64" height="64" fill="#0A0A0A"/>
+
+  <!-- Смещенная розовая тень -->
+  <path d="M16 16 V 52 H 48 V 16 H 36 V 40 H 28 V 16 Z" fill="#FF2D95"/>
+
+  <!-- Основная брутальная буква U -->
+  <path d="M12 12 V 48 H 44 V 12 H 32 V 36 H 24 V 12 Z" fill="#F4EFE6"/>
+
+  <!-- Оранжевый маркер-акцент -->
+  <rect x="36" y="40" width="8" height="8" fill="#FF3D00"/>
+</svg>
