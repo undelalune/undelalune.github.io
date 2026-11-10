@@ -19,159 +19,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
-<style>
-  /* Light · sharp · International typographic style, monochrome */
-  :root {
-    --bg: #fafbfc;
-    --fg: #0d0d0d;
-    --muted: #6a6f78;
-    --line: #0d0d0d;
-    --rule: 4px;
-    --hair: #dfe2e7;
-    --accent: #0d0d0d;
-    --logo: #0d0d0d;
-    --text: #333333;
-  }
-  :root[data-theme="dark"] {
-    --bg: #0e0f11;
-    --fg: #ececec;
-    --muted: #8d9199;
-    --line: #50545c;
-    --rule: 3px;
-    --hair: #2a2d33;
-    --accent: #ececec;
-    --logo: #ececec;
-    --text: #c4c6cb;
-  }
-  * { box-sizing: border-box; }
-  html { background: var(--bg); }
-  body {
-    margin: 0;
-    color: var(--fg);
-    background: var(--bg);
-    transition: background-color .25s, color .25s;
-    font: 16px/1.55 Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
-    -webkit-font-smoothing: antialiased;
-  }
-  main { max-width: 68rem; margin: 0 auto; padding: 3rem 1.5rem 4rem; }
-
-  header {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: end;
-    gap: 2rem;
-    padding-bottom: 1.5rem;
-    border-bottom: var(--rule) solid var(--line);
-  }
-  h1 {
-    margin: 0;
-    font-size: clamp(3rem, 11vw, 8.5rem);
-    line-height: .85;
-    font-weight: 800;
-    letter-spacing: -.055em;
-  }
-  /* A pre-rendered PNG used as a mask, not inline SVG: with GPU rasterization Chrome
-     draws vector paths with coarse MSAA and the curves come out stair-stepped.
-     logo.png is undelalune.svg rendered at 312px (3x), so the theme still sets the colour */
-  .logo {
-    width: clamp(56px, 9vw, 104px); aspect-ratio: 1; display: block;
-    background: var(--logo);
-    --logo-shape: url("logo.png");
-    -webkit-mask: var(--logo-shape) center / contain no-repeat;
-    mask: var(--logo-shape) center / contain no-repeat;
-  }
-  .intro {
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    position: relative;
-    gap: 2rem;
-    padding: 1.25rem 0 4rem;
-    font-size: .95rem;
-  }
-  .intro p { grid-column: 2; grid-row: 1; margin: 0; max-width: 28rem; font-size: 1.35rem; line-height: 1.3; font-weight: 500; letter-spacing: -.01em; }
-  .intro p small { display: block; margin-top: .35rem; font-size: 1rem; font-weight: 400; letter-spacing: 0; color: var(--muted); }
-  .intro > span { color: var(--muted); }
-
-  .theme-switch {
-    position: absolute; top: 1.25rem; right: 0;
-    display: flex; gap: .4rem;
-    padding: 0; border: 0; background: none; cursor: pointer;
-    font: 700 .75rem/1 Inter, system-ui, sans-serif; letter-spacing: .08em; text-transform: uppercase;
-    color: var(--muted);
-  }
-  .theme-switch i { font-style: normal; font-weight: 400; }
-  .theme-switch span { padding-bottom: .3rem; border-bottom: 2px solid transparent; transition: color .2s, border-color .2s; }
-  .theme-switch:hover span { color: var(--fg); }
-  :root[data-theme="light"] .theme-switch [data-t="light"],
-  :root[data-theme="dark"] .theme-switch [data-t="dark"] { color: var(--fg); border-color: var(--fg); }
-  .theme-switch:focus-visible { outline: 2px solid var(--fg); outline-offset: 4px; }
-
-  section {
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    gap: 2rem;
-    border-top: 1px solid var(--line);
-    padding-top: .9rem;
-  }
-  section + section { margin-top: 3.5rem; }
-  h2 {
-    margin: 0;
-    font-size: .8rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: .08em;
-  }
-  h2 b { color: var(--muted); font-weight: 700; margin-right: .5rem; }
-
-  .item {
-    display: grid;
-    grid-template-columns: 56px 1fr 11rem;
-    gap: 1.5rem;
-    padding: 0 0 1.75rem;
-  }
-  .item + .item { border-top: 1px solid var(--hair); padding-top: 1.75rem; }
-  .icon { width: 56px; height: 56px; display: block; border-radius: 22%; }
-  /* Soft shadow so light tiles don't dissolve into the page */
-  .icon:not(.bare) { box-shadow: 0 1px 2px rgba(0, 0, 0, .15), 0 2px 5px rgba(0, 0, 0, .12); }
-  .item h3 { margin: 0 0 .4rem; font-size: 1.5rem; line-height: 1.1; font-weight: 700; letter-spacing: -.03em; }
-  .item h3 small { display: block; margin-top: .35rem; font-size: .75rem; font-weight: 500; letter-spacing: .02em; color: var(--muted); }
-  .item p { margin: 0; color: var(--text); max-width: 36rem; }
-  .links { display: flex; flex-direction: column; gap: .35rem; font-size: .85rem; }
-  .links a { color: var(--fg); text-decoration: none; border-bottom: 1px solid var(--hair); padding-bottom: .3rem; }
-  .links a::after { content: " ›"; }
-  .links a.primary { font-weight: 700; color: var(--accent); border-color: var(--accent); }
-  .links a:hover { color: var(--muted); border-color: var(--muted); }
-  .links .soon { color: var(--muted); border-bottom: 1px dashed var(--hair); padding-bottom: .3rem; cursor: default; }
-
-  footer {
-    margin-top: 5rem;
-    padding-top: .9rem;
-    border-top: var(--rule) solid var(--line);
-    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
-    font-size: .85rem; font-weight: 500;
-  }
-  footer a { color: var(--fg); }
-  footer a:hover { color: var(--muted); }
-
-  /* Raw Eye is transparent and needs a light tile on a dark page */
-  [data-theme="dark"] .icon.tile { background: var(--fg); padding: 4px; }
-  [data-theme="dark"] .links a.primary { border-color: var(--line); }
-
-  @media (prefers-reduced-motion: reduce) {
-    body, .theme-switch span { transition: none; }
-  }
-
-  @media (max-width: 52rem) {
-    .intro, section { grid-template-columns: 1fr; gap: 1rem; }
-    .intro { grid-template-columns: 1fr auto; }
-    .intro p { grid-column: 1 / -1; grid-row: 2; }
-    .theme-switch { position: static; grid-column: 2; grid-row: 1; justify-self: end; align-self: start; }
-    .item { grid-template-columns: 48px 1fr; }
-    .icon { width: 48px; height: 48px; }
-    .links { grid-column: 2; flex-direction: row; flex-wrap: wrap; gap: .5rem 1.25rem; }
-    .links a, .links .soon { border: 0; padding: 0; }
-  }
-</style>
+<link rel="stylesheet" href="/style.css">
 </head>
 <body>
 <main>
@@ -193,12 +41,13 @@
       <article class="item">
         <img class="icon" src="icons/motorec.png" alt="" width="56" height="56">
         <div>
-          <h3>MotoRec <small>Android · iOS coming soon</small></h3>
+          <h3><a href="/motorec/">MotoRec</a> <small>Android · iOS coming soon</small></h3>
           <p>A voice recorder for people on the move: hands-free recording, GPS tracks, and on-device transcription. Catch a melody before it slips away, narrate a vlog, keep a travel diary on the road, or just dictate a quick note.</p>
         </div>
         <div class="links">
           <a class="primary" href="https://play.google.com/store/apps/details?id=com.undelalune.motorec">Google Play</a>
           <span class="soon">App Store · Coming soon</span>
+          <a href="/motorec/">More</a>
           <a href="/legal/motorec/privacy-policy.html">Privacy policy</a>
           <a href="/legal/motorec/terms-of-service.html">Terms of service</a>
         </div>
@@ -206,12 +55,13 @@
       <article class="item">
         <img class="icon" src="icons/everydo.png" alt="" width="56" height="56">
         <div>
-          <h3>Everydo <small>Android · iOS coming soon</small></h3>
+          <h3><a href="/everydo/">Everydo</a> <small>Android · iOS coming soon</small></h3>
           <p>Most to-do apps make you pick one exact date. Real life runs on windows: rent between the 1st and the 5th, bins out on Tuesday or Wednesday. Everydo is built around them: each recurring task gets a window instead of a deadline, and a missed task stays on the list until you close it.</p>
         </div>
         <div class="links">
           <a class="primary" href="https://play.google.com/store/apps/details?id=com.undelalune.everydo">Google Play</a>
           <span class="soon">App Store · Coming soon</span>
+          <a href="/everydo/">More</a>
           <a href="/legal/everydo/privacy-policy.html">Privacy policy</a>
           <a href="/legal/everydo/terms-of-service.html">Terms of service</a>
         </div>
@@ -219,12 +69,13 @@
       <article class="item">
         <img class="icon" src="icons/icd11.png" alt="" width="56" height="56">
         <div>
-          <h3>ICD-11 Global <small>Android · iOS · Coming soon</small></h3>
+          <h3><a href="/icd11/">ICD-11 Global</a> <small>Android · iOS · Coming soon</small></h3>
           <p>A fast, offline ICD-11 browser for doctors and medical coders. Search by code or text, read the classification in any language WHO publishes, and follow cross-references with a tap. Not an official WHO product.</p>
         </div>
         <div class="links">
           <span class="soon">Google Play · Coming soon</span>
           <span class="soon">App Store · Coming soon</span>
+          <a href="/icd11/">More</a>
           <a href="/legal/icd11/privacy-policy.html">Privacy policy</a>
           <a href="/legal/icd11/terms-of-service.html">Terms of service</a>
         </div>
@@ -289,23 +140,6 @@
     <a href="mailto:support@undelalune.com">support@undelalune.com</a>
   </footer>
 </main>
-<script>
-  (function () {
-    var root = document.documentElement;
-    var btn = document.querySelector('.theme-switch');
-    var meta = document.querySelector('meta[name="theme-color"]');
-    function apply(t) {
-      root.dataset.theme = t;
-      btn.setAttribute('aria-label', t === 'dark' ? 'Switch to light theme' : 'Switch to dark theme');
-      meta.setAttribute('content', t === 'dark' ? '#0e0f11' : '#fafbfc');
-    }
-    apply(root.dataset.theme);
-    btn.addEventListener('click', function () {
-      var t = root.dataset.theme === 'dark' ? 'light' : 'dark';
-      apply(t);
-      try { localStorage.setItem('theme', t); } catch (e) {}
-    });
-  })();
-</script>
+<script src="/site.js" defer></script>
 </body>
 </html>
