@@ -14,3 +14,21 @@
     try { localStorage.setItem('theme', t); } catch (e) {}
   });
 })();
+
+(function () {
+  document.querySelectorAll('a.video[data-yt]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      var frame = document.createElement('iframe');
+      frame.src = 'https://www.youtube-nocookie.com/embed/' + link.dataset.yt + '?autoplay=1';
+      frame.allow = 'autoplay; encrypted-media; picture-in-picture';
+      frame.allowFullscreen = true;
+      frame.title = link.getAttribute('aria-label');
+      var box = document.createElement('div');
+      box.className = 'video playing';
+      box.appendChild(frame);
+      link.replaceWith(box);
+      frame.focus();
+    });
+  });
+})();
