@@ -215,3 +215,6 @@ footer nav { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; }
   .shots img { width: 180px; }
 }
 .notice { margin: 0 0 .75rem; color: var(--text); max-width: 40rem; }
+.watch { margin: .6rem 0 0; font-size: .8rem; }
+.watch a { color: var(--muted); }
+.watch a:hover { color: var(--fg); }
