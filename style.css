@@ -90,6 +90,16 @@ body::before {
     radial-gradient(circle at 54.8% 13.8%, rgba(255, 201, 140, 0.71), rgba(255, 201, 140, 0.25) 2.9px, transparent 6.4px);
 }
 :root[data-theme="dark"] body::before { opacity: 1; }
+/* Dark theme only: soft warm sunlight from the top right corner, where the light on the logo comes from.
+   Sits under the stars and is not masked, so it spills over the content column too */
+body::after {
+  content: ""; position: fixed; inset: 0; z-index: -2; pointer-events: none;
+  opacity: 0; transition: opacity .25s;
+  background:
+    radial-gradient(ellipse 70% 80% at 100% 0, rgba(255, 214, 165, .11), rgba(255, 214, 165, .05) 35%, rgba(255, 214, 165, .015) 65%, transparent),
+    radial-gradient(ellipse 130% 140% at 100% 0, rgba(255, 190, 130, .06), rgba(255, 190, 130, .03) 35%, rgba(255, 190, 130, .01) 65%, transparent);
+}
+:root[data-theme="dark"] body::after { opacity: 1; }
 .comets {
   position: fixed; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none;
   opacity: 0; transition: opacity .25s;
