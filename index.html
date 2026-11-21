@@ -6,12 +6,12 @@
 <title>undelalune</title>
 <meta name="description" content="Small apps and games by undelalune: mobile apps for Android and iOS, a desktop video tool, online party games and an encrypted chat.">
 <link rel="canonical" href="https://undelalune.com/">
-<meta name="theme-color" content="#fafbfc">
+<meta name="theme-color" content="#0e0f11">
 <script>
   (function () {
     var t;
     try { t = localStorage.getItem('theme'); } catch (e) {}
-    if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    if (t !== 'light') t = 'dark';
     document.documentElement.dataset.theme = t;
   })();
 </script>
